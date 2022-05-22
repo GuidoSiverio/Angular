@@ -23,4 +23,8 @@ export class MainPageComponent {
     nombre: '',
     poder: 0
   }
+
+  agregarNuevoGuerrero( guerrero: Guerrero){
+    this.guerreros.push(guerrero);
+  }
 }

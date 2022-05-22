@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Guerrero } from '../interfaces/dbz.interface';
 
 @Component({
@@ -9,13 +9,16 @@ export class AgregarComponent {
 
   @Input() nuevo: Guerrero = {nombre: '', poder: 0};
 
+  @Output() onNuevoGuerrero: EventEmitter<Guerrero> = new EventEmitter();
+
   agregar(){
     //event.preventDefault();  //impide que actualice la pagina
     
     if (this.nuevo.nombre.trim().length === 0) {
       return;
     }
-    console.log(this.nuevo);
+
+    this.onNuevoGuerrero.emit( this.nuevo );
     
     this.nuevo = {nombre: '', poder: 0}
     
